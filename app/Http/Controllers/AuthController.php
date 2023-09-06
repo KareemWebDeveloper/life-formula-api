@@ -71,7 +71,7 @@ class AuthController extends Controller
                 'new_password' => 'required|string|confirmed',
             ]);
             $user->update([
-                'password' => bcrypt($fields['password']),
+                'password' => bcrypt($fields['new_password']),
             ]);
             return response()->json(['message'=> 'password changed successfully'],200);
         }
