@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::post("/categories/create" , [CategoryController::class, 'storeCategory']);
     Route::get("/user" ,  [AuthController::class, 'getUser']);
     Route::get("/Logout" ,  [AuthController::class, 'Logout']);
+    Route::post("/resetPw" ,  [AuthController::class, 'changePw']);
     Route::get("/userRole" ,  [AuthController::class, 'userRole']);
     Route::get("/userProfile" ,  [AuthController::class, 'userProfile']);
     Route::post("/userProfile/create" ,  [AuthController::class, 'createProfile']);

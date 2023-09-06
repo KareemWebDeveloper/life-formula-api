@@ -63,6 +63,23 @@ class AuthController extends Controller
         return response()->json(['userDetails' => $userDetails , 'user' => $user],200);
     }
 
+    public function changePw(Request $request){
+        $user = $request->user();
+        $current_pw = $request->current_password;
+        if(Hash::check($current_pw, $user->password)){
+            $fields = $request->validate([
+                'new_password' => 'required|string|confirmed',
+            ]);
+            $user->update([
+                'password' => bcrypt($fields['password']),
+            ]);
+            return response()->json(['message'=> 'password changed successfully'],200);
+        }
+        else{
+            return response()->json(['message'=> 'Current Password Incorrect'],401);
+        }
+    }
+
     public function createProfile(Request $request){
         $user = $request->user();
         $fields = $request->validate([
