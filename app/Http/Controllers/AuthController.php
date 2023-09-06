@@ -68,7 +68,7 @@ class AuthController extends Controller
         $current_pw = $request->current_password;
         if(Hash::check($current_pw, $user->password)){
             $fields = $request->validate([
-                'new_password' => 'required|string|confirmed',
+                'new_password' => 'required',
             ]);
             $user->update([
                 'password' => bcrypt($fields['new_password']),
