@@ -14,7 +14,7 @@ class ContactMailController extends Controller
 
         // Validate and process the form data if needed
 
-        Mail::to('kareemdeveloper24@gmail.com')->send(new ContactFormMail($formData));
+        Mail::to('info@lifeformula.us')->send(new ContactFormMail($formData));
         return response()->json(['message' => 'Email sent successfully'],200);
     }
 }
