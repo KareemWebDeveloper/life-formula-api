@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactMailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post("/login" ,  [AuthController::class, 'login']);
+Route::post("/contact" ,  [ContactMailController::class, 'sendEmail']);
 Route::post("/register" , [AuthController::class, 'Register']);
 Route::get("/categories" , [CategoryController::class, 'getCategories']);
 Route::get("/products" , [ProductController::class, 'getProducts']);
