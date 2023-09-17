@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get("/Logout" ,  [AuthController::class, 'Logout']);
     Route::post("/resetPw" ,  [AuthController::class, 'changePw']);
     Route::get("/userRole" ,  [AuthController::class, 'userRole']);
+    Route::get("/users" ,  [AuthController::class, 'getUsers']);
+    Route::post("/userRole/update" ,  [AuthController::class, 'updateUserRole']);
     Route::get("/userProfile" ,  [AuthController::class, 'userProfile']);
     Route::post("/userProfile/create" ,  [AuthController::class, 'createProfile']);
     Route::put("/userProfile/update" ,  [AuthController::class, 'updateProfile']);
