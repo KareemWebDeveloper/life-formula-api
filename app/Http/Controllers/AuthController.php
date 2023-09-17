@@ -57,6 +57,35 @@ class AuthController extends Controller
         return response()->json(['user'=> $user],200);
     }
 
+    public function getUsers(Request $request){
+        $user = $request->user();
+        if($user->type == 'admin'){
+            $users = User::get();
+            return response()->json(['users'=> $users],200);
+        }
+        else{
+            return response()->json(['message'=> 'unauthorized'],401);
+        }
+    }
+
+    public function updateUserRole(Request $request){
+        $user = $request->user();
+        if($user->type == 'admin'){
+            $request->validate([
+                'id' => 'required',
+                'type' => 'required|string',
+            ]);
+            $targetUser = User::find($request->id);
+            $targetUser->update([
+                'type' => $request->type
+            ]);
+            return response()->json(['message'=> 'user role updated successfully'],200);
+        }
+        else{
+            return response()->json(['message'=> 'unauthorized'],401);
+        }
+    }
+
     public function userProfile(Request $request){
         $user = $request->user();
         $userDetails = $user->userDetails;
