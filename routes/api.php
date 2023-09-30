@@ -4,8 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactMailController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TermsConditionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,7 @@ Route::get("/categories" , [CategoryController::class, 'getCategories']);
 Route::get("/products" , [ProductController::class, 'getProducts']);
 Route::get("/product/{id}" , [ProductController::class, 'ProductFind']);
 Route::get("/featured" , [ProductController::class, 'getFeaturedProducts']);
+Route::get("/terms-conditions" , [TermsConditionsController::class, 'getTermsConditions']);
 
 Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::post("/categories/create" , [CategoryController::class, 'storeCategory']);
@@ -47,6 +50,9 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::get("/cart" ,  [CartController::class, 'getUserCart']);
     Route::delete("/cart/delete/{id}" ,  [CartController::class, 'deleteCart']);
     Route::post("/create-checkout-session" , [PaymentController::class, 'createCheckoutSession']);
+    Route::get("/orders" , [OrderController::class, 'getOrderWithUserAndItems']);
+    Route::post("/terms-conditions/{id}" , [TermsConditionsController::class, 'updateTermsConditions']);
+    Route::post("/terms-conditions/create" , [TermsConditionsController::class, 'createTermsConditions']);
 });
 
 
