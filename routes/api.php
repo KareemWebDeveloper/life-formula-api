@@ -30,6 +30,7 @@ Route::get("/products" , [ProductController::class, 'getProducts']);
 Route::get("/product/{id}" , [ProductController::class, 'ProductFind']);
 Route::get("/featured" , [ProductController::class, 'getFeaturedProducts']);
 Route::get("/terms-conditions" , [TermsConditionsController::class, 'getTermsConditions']);
+Route::get("/blog" , [ProductController::class, 'getProductsBlog']);
 
 Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::post("/categories/create" , [CategoryController::class, 'storeCategory']);

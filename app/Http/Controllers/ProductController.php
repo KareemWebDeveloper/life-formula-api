@@ -91,7 +91,7 @@ class ProductController extends Controller
 
         $product = Product::create($fields);
 
-        // return response()->json(['category' => $category->name],200);    
+        // return response()->json(['category' => $category->name],200);
         return response()->json(['product' => $product , 'category' => $category],200);
     }
         else{
@@ -129,6 +129,10 @@ class ProductController extends Controller
         else{
             return response()->json(['message' => 'not authorized'],401);
         }
+    }
+    public function getProductsBlog(Request $request) {
+        $Articles = Product::pluck('product_article');
+        return response()->json(['blog' => $Articles],200);
     }
 
 
