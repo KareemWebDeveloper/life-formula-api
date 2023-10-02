@@ -131,7 +131,7 @@ class ProductController extends Controller
         }
     }
     public function getProductsBlog(Request $request) {
-        $Articles = Product::pluck('product_article');
+        $Articles = Product::select('id' , 'image', 'name', 'product_article')->get();
         return response()->json(['blog' => $Articles],200);
     }
 
