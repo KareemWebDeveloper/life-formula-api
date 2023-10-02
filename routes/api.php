@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::delete("/cart/delete/{id}" ,  [CartController::class, 'deleteCart']);
     Route::post("/create-checkout-session" , [PaymentController::class, 'createCheckoutSession']);
     Route::get("/orders" , [OrderController::class, 'getOrderWithUserAndItems']);
-    Route::post("/terms-conditions/{id}" , [TermsConditionsController::class, 'updateTermsConditions']);
+    Route::post("/terms-conditions/update/{id}" , [TermsConditionsController::class, 'updateTermsConditions']);
     Route::post("/terms-conditions/create" , [TermsConditionsController::class, 'createTermsConditions']);
 });
 
