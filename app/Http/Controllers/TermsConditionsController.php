@@ -28,16 +28,16 @@ class TermsConditionsController extends Controller
         $termsConditions = TermsConditions::get();
         return response()->json(['termsAndConditions' => $termsConditions]);
     }
-    
+
     public function updateTermsConditions(Request $request , $id){
         $user = $request->user();
         if($user->type == 'moderator' || $user->type == 'admin'){
             $TermsConditions = TermsConditions::find($id);
             $fields = $request->validate([
-                'terms_conditions' => 'string',
-                'privacy_policy' => 'string',
-                'shipping_policies' => 'string',
-                'returns_policies' => 'string',
+                'terms_conditions' => 'string|nullable',
+                'privacy_policy' => 'string|nullable',
+                'shipping_policies' => 'string|nullable',
+                'returns_policies' => 'string|nullable',
             ]);
             $TermsConditions->update($fields);
             return response()->json(['termsAndConditions' => $TermsConditions]);
