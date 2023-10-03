@@ -75,17 +75,17 @@ class ProductController extends Controller
             'image' => 'string',
             'featured' => 'boolean',
             'category_id' => 'required|numeric',
-            'sale' => 'numeric',
-            'old_price' => 'numeric',
+            'sale' => 'numeric|nullable',
+            'old_price' => 'numeric|nullable',
             'how_to_take_it' => 'required|string',
             'ingredients_image' => 'required_if:ingredients_text,null|string',
             'ingredients_text' => 'required_if:ingredients_image,null|string',
             'product_description' => 'required|string',
             'product_article' => 'string',
             'product_icons' => 'json',
-            'sale_on_3' => 'numeric',
-            'sale_on_6' => 'numeric',
-            'sale_on_9' => 'numeric',
+            'sale_on_3' => 'numeric|nullable',
+            'sale_on_6' => 'numeric|nullable',
+            'sale_on_9' => 'numeric|nullable',
         ]);
         $fields['categoryName'] = $category->name;
 
