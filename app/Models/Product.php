@@ -27,6 +27,7 @@ class Product extends Model
         "sale_on_3",
         "sale_on_6",
         "sale_on_9",
+        "categoryName"
     ];
 
     public function category()
