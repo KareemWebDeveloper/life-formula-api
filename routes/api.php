@@ -46,7 +46,9 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::post("/productRating" ,  [ProductController::class, 'submitRating']);
     Route::post("/products/create" , [ProductController::class, 'createProduct']);
     Route::put("/products/update/{id}" , [ProductController::class, 'updateProduct']);
+    Route::put("/categories/update/{id}" , [CategoryController::class, 'updateCategory']);
     Route::delete("/proudcts/remove/{id}" ,  [ProductController::class, 'destroyProduct']);
+    Route::delete("/categories/remove/{id}" ,  [CategoryController::class, 'destroyCategory']);
     Route::post("/addToCart" ,  [CartController::class, 'AddToCart']);
     Route::get("/cart" ,  [CartController::class, 'getUserCart']);
     Route::delete("/cart/delete/{id}" ,  [CartController::class, 'deleteCart']);
