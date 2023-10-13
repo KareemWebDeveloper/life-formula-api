@@ -131,7 +131,7 @@ class AuthController extends Controller
         $fields = $request->validate([
             'address' => 'required|string',
             'city' => 'required|string',
-            'location_link' => 'string',
+            'location_link' => 'nullable|string',
             'gender' => 'string',
             'state' => 'required|string',
             'zip_code' => 'string',
