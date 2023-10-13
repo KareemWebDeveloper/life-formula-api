@@ -114,22 +114,14 @@ class AuthController extends Controller
         $fields = $request->validate([
             'address' => 'required|string',
             'city' => 'required|string',
-            'location_link' => 'string',
+            'location_link' => 'nullable|string',
             'gender' => 'string',
             'state' => 'required|string',
             'zip_code' => 'string',
             'phone' => 'required|string|unique:user_details,phone',
         ]);
-        $userDetails = UserDetail::create([
-            'user_id' => $user->id,
-            'address' => $fields['address'],
-            'city' => $fields['city'],
-            'state' => $fields['state'],
-            'zip_code' => $fields['zip_code'],
-            'phone' => $fields['phone'],
-            'gender' => $fields['gender'],
-            'location_link' =>  $fields['location_link'],
-        ]);
+        $fields['user_id'] = $user->id;
+        $userDetails = UserDetail::create($fields);
         return response()->json(['userDetails' => $userDetails]);
     }
 
